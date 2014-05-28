@@ -5,6 +5,7 @@ class AddUserTable < ActiveRecord::Migration
       t.string :lastname
       t.string :email
       t.string :phone
+      t.string :password
     end
   end
 end

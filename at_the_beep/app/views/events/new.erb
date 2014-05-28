@@ -1,0 +1,26 @@
+<h2>Create Your New Event</h2>
+
+Enter a few details:
+
+<form method='post' action='/events'>
+  <div>
+    Event Name:<input type='text' name='name'>
+  </div>
+  <div>
+    Start Date/Time:<input type='datetime-local' name='start_date' value='javascript datepicker here'>
+  </div>
+  <div>
+    End Date/Time:<input type='datetime-local' name='end_date' value='javascript datepicker here'>
+  </div>
+  <div>
+    Event Details:<input type='text' name='details'>
+  </div>
+  <div>
+    Message Max-Length [?]:<input type='number' name='message_length'>
+  </div>
+
+
+  <div>
+    <input type='submit' value='Create Event'>
+  </div>
+</form>
