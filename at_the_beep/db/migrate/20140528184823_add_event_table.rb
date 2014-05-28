@@ -7,6 +7,8 @@ class AddEventTable < ActiveRecord::Migration
       t.datetime :end_time
       t.integer :message_length
       t.string :url
+
+      t.belongs_to :user
     end
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140528184823) do
+ActiveRecord::Schema.define(version: 20140528185535) do
 
   create_table "events", force: true do |t|
     t.string   "name"
@@ -19,6 +19,13 @@ ActiveRecord::Schema.define(version: 20140528184823) do
     t.datetime "end_time"
     t.integer  "message_length"
     t.string   "url"
+    t.integer  "user_id"
+  end
+
+  create_table "messages", force: true do |t|
+    t.integer "category"
+    t.string  "twilio_object"
+    t.integer "event_id"
   end
 
   create_table "users", force: true do |t|
