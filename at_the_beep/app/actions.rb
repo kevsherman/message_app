@@ -24,8 +24,8 @@ post '/users' do
 end
 
 get '/users/:id' do 
-  @user = User.find(params[:id])
-  @events = Event.where("user_id = ?", params[:id])
+  @user = User.find(session[:id])
+  @events = Event.where("user_id = ?", session[:id]).reverse
   erb :'users/show'
 end
 
@@ -68,13 +68,36 @@ post '/events' do
     message_length: params[:message_length],
     user_id: session[:id])
   if @event.save
-    session[:event_id] = @event.id
-    redirect "/users/#{session[:id]}"
+    @event.update(url: "events/#{@event.id}")
+    redirect "/events/#{@event.id}"
   else
     erb :'users/new'
   end
-
 end
+
+get '/events/:id' do
+  @event = Event.find(params[:id])
+
+  erb :'events/show'
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

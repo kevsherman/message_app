@@ -7,7 +7,7 @@
 
 <ul>
   <% @events.each do |event| %>
-    <li><%= event.name %></li>
+    <li><a href="../events/<%=event.id%>"><%= event.name %></a></li>
   <%end%>
 </ul>
 
@@ -20,6 +20,7 @@
 <hr/>
 <div><a href='/'>Home</a></div>
 <div><a href='/logout'>Logout</a></div>
+
 
 
 
