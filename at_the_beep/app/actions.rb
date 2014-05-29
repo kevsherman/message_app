@@ -1,5 +1,11 @@
+helpers do 
+  def current_user
+    @current_user = User.where(id: session[:id]).first
+  end
+end
 # Homepage (Root path)
 get '/' do
+  if session[:id] then redirect "/users/#{session[:id]}" end
   erb :index
 end
 
@@ -94,28 +100,5 @@ get '/events/call/:url' do
   session[:message] = nil
   erb :'events/call'
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
