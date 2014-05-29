@@ -5,9 +5,8 @@
 <ul>
   <%=@event.name%>
   <li><%=@event.details%></li>
-  <li>Starts:<%=@event.start_time%></li>
-  <li>Ends:<%=@event.end_time%></li>
-  <li>URL:  http://localhost:3000/events/<%=@event.url%></li>
+  <li>Date:<%=@event.date%></li>
+  <li>URL:  <a href='http://localhost:3000/events/call/<%=@event.url%>'>http://localhost:3000/events/call/<%=@event.url%></li>
 </ul>
 
 <div><a href='/users/<%= session[:id]%>'>Back to My Events</a></div>
