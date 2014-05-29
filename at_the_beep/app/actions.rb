@@ -79,11 +79,10 @@ post '/events' do
       redirect :'/events/new'
     end
 
- 
 end
 
 get '/events/:id' do
-  @event = Event.where('url = ?', "/events/#{params[:id]}")
+  @event = Event.where('url = ?', "#{params[:id]}").first
   erb :'events/show'
 end
 
