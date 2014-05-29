@@ -76,7 +76,7 @@ post '/events' do
 end
 
 get '/events/:id' do
-  @event = Event.where('url = ?', "/events/#{params[:id]}"))
+  @event = Event.where('url = ?', "/events/#{params[:id]}")
   erb :'events/show'
 end
 
