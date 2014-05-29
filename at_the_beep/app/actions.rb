@@ -4,14 +4,6 @@ get '/' do
 end
 
 get '/users/new' do
-  @event = Event.new(
-    name: params[:name],
-    start_time: params[:start_date],
-    end_time: params[:end_date],
-    details: params[:details],
-    message_length: params[:message_length],
-    user_id: session[:id],
-    url: url)
 
   erb :'/users/new'
 end
