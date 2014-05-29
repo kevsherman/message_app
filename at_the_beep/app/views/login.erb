@@ -1,5 +1,13 @@
 <h2>Please Log In to see your Events</h2>
 
+<% if @user %>
+  <% if @user.errors.any? %>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li><br/>
+    <% end %>
+  <% end %>
+<% end %>
+
 <form method='post' action='/login'>
   <div>
     Email:<input type='email' name='email'>

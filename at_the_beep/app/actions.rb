@@ -19,7 +19,6 @@ post '/users' do
     session[:id] = @user.id
     redirect "/users/#{session[:id]}"
   else
-    # session[:message] = @user.errors[:email]
     erb :'users/new'
   end
 end
@@ -39,6 +38,7 @@ post '/login' do
   if @user
     if @user.password == params[:password]
       session[:id] = @user.id
+      session[:message] = nil
       redirect :"/users/#{session[:id]}"
     else
       session[:message] = "Invalid password"
