@@ -60,19 +60,26 @@ get '/events/new' do
 end
 
 post '/events' do
+  url= ('a'..'z').to_a.shuffle[0,9].join
   @event = Event.new(
     name: params[:name],
     start_time: params[:start_date],
     end_time: params[:end_date],
     details: params[:details],
     message_length: params[:message_length],
-    user_id: session[:id])
-  if @event.save
-    @event.update(url: "events/#{@event.id}")
-    redirect "/events/#{@event.id}"
-  else
-    erb :'users/new'
-  end
+    user_id: session[:id],
+    url: url)
+
+    if @event.valid?
+      @event.save
+      session[:message] = "Event Saved!"
+      redirect :"/users/#{session[:id]}"
+    else
+      #session[:message] = @event.errors.full_messages
+      redirect :'/events/new'
+    end
+
+ 
 end
 
 get '/events/:id' do

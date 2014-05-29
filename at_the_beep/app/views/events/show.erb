@@ -3,11 +3,11 @@
 <h4>Event Details</h4>
 
 <ul>
-  <li><%=@event.name%></li>
+  <%=@event.name%>
   <li><%=@event.details%></li>
-  <li><%=@event.start_time%></li>
-  <li><%=@event.end_time%></li>
-  <li><%=@event.url%></li>
+  <li>Starts:<%=@event.start_time%></li>
+  <li>Ends:<%=@event.end_time%></li>
+  <li>URL:<%=@event.url%></li>
 </ul>
 
 <div><a href='/'>Home</a></div>
