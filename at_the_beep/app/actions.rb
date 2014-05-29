@@ -66,6 +66,7 @@ post '/events' do
   @event = Event.new(                     # and the generate_token method should a private
     name: params[:name],
     details: params[:details],
+    status: params[:status],
     date: params[:date],
     message_length: params[:message_length],
     limit_messages: params[:limit_messages],
@@ -82,11 +83,18 @@ post '/events' do
 
 end
 
-get '/events/:id' do
-  @event = Event.where('url = ?', "#{params[:id]}").first
+get '/events/:url' do
+  @event = Event.where('url = ?', "#{params[:url]}").first
+
   session[:message] = nil
   erb :'events/show'
 end
+get '/events/call/:url' do
+  @event = Event.where('url = ?', "#{params[:url]}").first
+  session[:message] = nil
+  erb :'events/call'
+end
+
 
 
 

@@ -17,7 +17,9 @@ ActiveRecord::Schema.define(version: 20140528185535) do
     t.string  "details"
     t.date    "date"
     t.integer "message_length"
+    t.integer "limit_messages"
     t.string  "url"
+    t.integer "status"
     t.integer "user_id"
   end
 
