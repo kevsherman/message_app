@@ -47,6 +47,7 @@ post '/login' do
   if @user
     if @user.password == params[:password]
       session[:id] = @user.id
+      session[:message] = nil
       redirect :"/users/#{session[:id]}"
     else
       session[:message] = "Invalid password"
