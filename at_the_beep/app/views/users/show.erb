@@ -1,0 +1,26 @@
+<h2>Hello <%= @user.firstname%> - Welcome to the Message App</h2>
+
+<h3><a href='../events/new'>Add New Event</a></h3>
+<h4>Here is a list of your events</h4>
+
+<h5>Current Events</h5>
+
+<ul>
+  <% @events.each do |event| %>
+    <li><a href="../events/<%=event.id%>"><%= event.name %></a></li>
+  <%end%>
+</ul>
+
+<hr/>
+<h5>Past Events</h5>
+<ul>
+    <li>Event One</li>
+    <li>Event Two</li>
+</ul>
+<hr/>
+<div><a href='/'>Home</a></div>
+<div><a href='/logout'>Logout</a></div>
+
+
+
+
