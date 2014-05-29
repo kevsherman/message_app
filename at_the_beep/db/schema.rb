@@ -13,13 +13,12 @@
 ActiveRecord::Schema.define(version: 20140528185535) do
 
   create_table "events", force: true do |t|
-    t.string   "name"
-    t.string   "details"
-    t.datetime "start_time"
-    t.datetime "end_time"
-    t.integer  "message_length"
-    t.string   "url"
-    t.integer  "user_id"
+    t.string  "name"
+    t.string  "details"
+    t.date    "date"
+    t.integer "message_length"
+    t.string  "url"
+    t.integer "user_id"
   end
 
   create_table "messages", force: true do |t|
