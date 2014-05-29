@@ -4,6 +4,15 @@ get '/' do
 end
 
 get '/users/new' do
+  @event = Event.new(
+    name: params[:name],
+    start_time: params[:start_date],
+    end_time: params[:end_date],
+    details: params[:details],
+    message_length: params[:message_length],
+    user_id: session[:id],
+    url: url)
+
   erb :'/users/new'
 end
 
@@ -60,8 +69,8 @@ get '/events/new' do
 end
 
 post '/events' do
-  url= ('a'..'z').to_a.shuffle[0,9].join
-  @event = Event.new(
+  url= ('a'..'z').to_a.shuffle[0,9].join # this should be moved into the model as an AactiveRecord validationsuch as: before_validation : generate_token, on :create 
+  @event = Event.new(                     # and the generate_token method should a private
     name: params[:name],
     start_time: params[:start_date],
     end_time: params[:end_date],

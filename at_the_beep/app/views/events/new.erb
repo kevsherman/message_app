@@ -1,24 +1,30 @@
-<h2>Create Your New Event</h2>
-
-Enter a few details:
+  <h2>New Event Details</h2>
 
 <form method='post' action='/events'>
   <div>
-    Event Name:<input type='text' name='name'>
+    Event Name:<input type='text' name='name' placeholder="Aniversary, B-Day, Wedding....">
   </div>
-  <div>
-    Start Date/Time:<input type='datetime-local' name='start_date' value='javascript datepicker here'>
-  </div>
-  <div>
-    End Date/Time:<input type='datetime-local' name='end_date' value='javascript datepicker here'>
-  </div>
-  <div>
-    Event Details:<input type='text' name='details'>
-  </div>
-  <div>
-    Message Max-Length [?]:<input type='number' name='message_length'>
+    <div>
+    Event Details:<input type='text' name='details' placeholder="where? why?">
   </div>
 
+  <div>
+    Event Date:<input type='date' name='start_date' value='<%=Time.now.strftime("%Y-%m-%e")%>'>
+  </div>
+    <br>
+
+  <div>
+    Message Settings<br>
+    Max. Length: <input type="radio" name="message_length" value="10" checked='checked'>10 sec. <input type="radio" name="message_length" value="15">15 sec. <br>
+    Limit Messages to:<br>
+    <input type="radio" name="limit_messages" value="1">1<br>
+    <input type="radio" name="limit_messages" value="10" checked='checked'>10<br>
+    <input type="radio" name="limit_messages" value="50">50<br>
+    <input type="radio" name="limit_messages" value="0">unlimited<br>
+
+  </div>
+
+<br>
 
   <div>
     <input type='submit' value='Create Event'>
