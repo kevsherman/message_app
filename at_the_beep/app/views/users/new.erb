@@ -1,5 +1,11 @@
 <h2>Welcome new user!  We just need a few details to get started:</h2>
 
+<% if @user.errors.any? %>
+  <% @user.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li><br/>
+  <% end %>
+<% end %>
+
 <form action='/users' method='post'>
   <div>
     Firstname:<input type='text' name='firstname'>

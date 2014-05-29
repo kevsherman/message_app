@@ -19,6 +19,7 @@ post '/users' do
     session[:id] = @user.id
     redirect "/users/#{session[:id]}"
   else
+    # session[:message] = @user.errors[:email]
     erb :'users/new'
   end
 end
