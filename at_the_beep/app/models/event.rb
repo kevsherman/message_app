@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
   has_many :messages
-  belongs_to :user
+  belongs_to :user   # make sure this is also specified in the migration that created the tableso the reference field and indexes are created
   validates :url, presence: true
 
 before_validation :generate_url, on: :create 
