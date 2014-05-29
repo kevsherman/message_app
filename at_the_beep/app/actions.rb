@@ -83,6 +83,7 @@ end
 
 get '/events/:id' do
   @event = Event.where('url = ?', "#{params[:id]}").first
+  session[:message] = nil
   erb :'events/show'
 end
 

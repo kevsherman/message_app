@@ -10,5 +10,5 @@
   <li>URL:<%=@event.url%></li>
 </ul>
 
-<div><a href='/'>Home</a></div>
+<div><a href='/users/<%= session[:id]%>'>Home</a></div>
 <div><a href='/logout'>Logout</a></div>
