@@ -3,7 +3,7 @@ class Event < ActiveRecord::Base
   belongs_to :user
   validates :url, presence: true
 
-before_validation : generate_url, on :create 
+before_validation :generate_url, on: :create 
 
   protected
 

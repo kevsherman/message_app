@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :events, dependant: :destroy
+  has_many :events, dependent: :destroy
   has_many :messages, through: :events
 
   validates :email, uniqueness: true
