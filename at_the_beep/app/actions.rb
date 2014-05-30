@@ -95,6 +95,13 @@ get '/events/call/:url' do
   erb :'events/call'
 end
 
+post '/events/call' do
+
+  @event = Event.where('url = ?', params[:url])
+  CallBack.initiate_call(@event, params[:phone])
+  binding.pry
+end
+
 
 
 

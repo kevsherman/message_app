@@ -9,9 +9,14 @@ require 'sinatra/activerecord'
 require 'date'
 
 require 'pry'
+require 'twilio'
+require 'twilio-ruby'
+
 
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
 APP_NAME = APP_ROOT.basename.to_s
+
+require APP_ROOT.to_path+'/app/models/call_back'
 
 # Sinatra configuration
 configure do

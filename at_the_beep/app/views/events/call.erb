@@ -3,3 +3,14 @@
 <h4>is <%= Event::STATUS[@event.status]%></h4>
 
 
+<form action='/events/call' method='post'>
+
+<div>
+  Enter your phone number<br/>
+  <input type='phone' name='phone'>
+  <input type='hidden' name='url', value='<%=@event.url%>'>
+</div>
+<div>
+  <input type="submit">
+</div>
+</form>
