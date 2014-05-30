@@ -1,5 +1,11 @@
+helpers do 
+  def current_user
+    @current_user = User.where(id: session[:id]).first
+  end
+end
 # Homepage (Root path)
 get '/' do
+  if session[:id] then redirect "/users/#{session[:id]}" end
   erb :index
 end
 
@@ -95,6 +101,7 @@ get '/events/call/:url' do
   erb :'events/call'
 end
 
+
 post '/events/call' do
 
   @event = Event.where('url = ?', params[:url])
@@ -103,26 +110,28 @@ post '/events/call' do
 end
 
 
+get '/events/dial' do
+  # <Dial record="true">
+  #   <Number url="/events/record.xml?#{@event.url}">+16045518785</Number>
+  # </Dial>
+end
 
+post '/events/record/:url' do
+  @event = Event.where('url = ?', "#{params[:url]}").first
+  content_type 'text/xml'
+  @xml_response = record_instructions(@event)
+  erb :'events/record.xml', layout: false
+end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+def record_instructions(event)
+"<Say>Welcome! You have #{event.message_length} seconds to leave a message for #{event.name}. at the beep, you know the drill</Say>
+<Record action=\"http://atthebeep.com/events/recording/#{event.url}\"
+                    method=\"POST\"
+                    maxLength=\"#{event.message_length}\"
+                    finishOnKey=\"#\"
+                    />
+  "  
+end
 
 
 
