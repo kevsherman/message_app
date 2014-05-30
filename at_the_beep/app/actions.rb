@@ -106,18 +106,11 @@ post '/events/call' do
   CallBack.initiate_call(@event, params[:phone])
 end
 
-get '/events/dial' do
-  # <Dial record="true">
-  #   <Number url="/events/record.xml?#{@event.url}">+16045518785</Number>
-  # </Dial>
-end
-
 post '/events/record/:url' do
   @event = Event.where('url = ?', "#{params[:url]}").first
   content_type 'text/xml'
   @xml_response = CallBack.record_instructions(@event)
   erb :'events/record.xml', layout: false
-  
 end
 
 

@@ -7,7 +7,7 @@ class AddEventTable < ActiveRecord::Migration
       t.integer :message_length
       t.integer :limit_messages
       t.string :url
-      t.integer :status
+      t.boolean :status, default: true
 
       t.belongs_to :user
     end

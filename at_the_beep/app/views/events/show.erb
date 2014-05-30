@@ -1,4 +1,8 @@
-<h2>The Event known as <%= @event.name %></h2>
+<h2><%= @event.name %></h2>
+
+<% if @event.check_status == false%>
+<h3>This event is now closed</h3>
+<%end%>
 
 <h4>Event Details</h4>
 

@@ -1,16 +1,25 @@
 <h2>The Event known as <%= @event.name %></h2>
 
-<h4>is <%= Event::STATUS[@event.status]%></h4>
+<% if @event.check_status %>
+  <h3>Enter your phone number:</h3>
+
+  <br/>
+
+  <form action='/events/call' method='post'>
+    <div>
+      <input type='phone' name='phone'>
+      <input type='hidden' name='url' value='<%=@event.url%>'>
+    </div>
+    <div>
+      <input type="submit">
+    </div>
+  </form>
 
 
-<form action='/events/call' method='post'>
+<%else%>
+  <h3> Sorry, you're too late!</h3>
+<% end %>
 
-<div>
-  Enter your phone number<br/>
-  <input type='phone' name='phone'>
-  <input type='hidden' name='url', value='<%=@event.url%>'>
-</div>
-<div>
-  <input type="submit">
-</div>
-</form>
+
+
+

@@ -8,13 +8,9 @@ class Event < ActiveRecord::Base
 
 before_validation :generate_url, on: :create 
 
-STATUS=['not accepting Messages at this time.','accepting Messages']
-
-
-def status_message
-  Event::STATUS[self.status]
+def check_status
+  self.date == Date.today
 end
-
 
 protected
 
