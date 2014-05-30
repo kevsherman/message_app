@@ -16,13 +16,11 @@ auth_token = '9d0981c62a42b8a7489ac68269dcf1d1'
       "  
   end
 
-  def self.initiate_call(event, phone_num, url)
+  def self.initiate_call(event, phone_num)
     @call = @client.account.calls.create(
     :from => '17786547065',   # From your Twilio number
     :to => phone_num,    
     # Fetch instructions from this URL when the call connects
-    :url => "http://localhost:3000/at_the_beep/app/events/record/#{event.url}") 
+    :url => "http://localhost:3000/events/record/#{event.url}") #where to return(location of the instructions)
   end
-
-
 end

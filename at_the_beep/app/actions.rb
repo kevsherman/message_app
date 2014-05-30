@@ -102,7 +102,7 @@ get '/events/call/:url' do
 end
 
 post '/events/call' do
-  @event = Event.where('url = ?', params[:url])
+  @event = Event.where('url = ?', params[:url]).first
   CallBack.initiate_call(@event, params[:phone])
 end
 
@@ -116,9 +116,8 @@ post '/events/record/:url' do
   @event = Event.where('url = ?', "#{params[:url]}").first
   content_type 'text/xml'
   @xml_response = CallBack.record_instructions(@event)
-  # erb :'events/record.xml', layout: false
-  CallBack.initiate_call(@event, '16048805822', @xml_response)
-  binding.pry
+  erb :'events/record.xml', layout: false
+  
 end
 
 
