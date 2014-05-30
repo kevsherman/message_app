@@ -91,24 +91,20 @@ end
 
 get '/events/:url' do
   @event = Event.where('url = ?', "#{params[:url]}").first
-
   session[:message] = nil
   erb :'events/show'
 end
+
 get '/events/call/:url' do
   @event = Event.where('url = ?', "#{params[:url]}").first
   session[:message] = nil
   erb :'events/call'
 end
 
-
 post '/events/call' do
-
   @event = Event.where('url = ?', params[:url])
   CallBack.initiate_call(@event, params[:phone])
-  binding.pry
 end
-
 
 get '/events/dial' do
   # <Dial record="true">
@@ -119,19 +115,13 @@ end
 post '/events/record/:url' do
   @event = Event.where('url = ?', "#{params[:url]}").first
   content_type 'text/xml'
-  @xml_response = record_instructions(@event)
-  erb :'events/record.xml', layout: false
+  @xml_response = CallBack.record_instructions(@event)
+  # erb :'events/record.xml', layout: false
+  CallBack.initiate_call(@event, '16048805822', @xml_response)
+  binding.pry
 end
 
-def record_instructions(event)
-"<Say>Welcome! You have #{event.message_length} seconds to leave a message for #{event.name}. at the beep, you know the drill</Say>
-<Record action=\"http://atthebeep.com/events/recording/#{event.url}\"
-                    method=\"POST\"
-                    maxLength=\"#{event.message_length}\"
-                    finishOnKey=\"#\"
-                    />
-  "  
-end
+
 
 
 
