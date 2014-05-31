@@ -19,12 +19,17 @@ ActiveRecord::Schema.define(version: 20140528185535) do
     t.integer "message_length"
     t.integer "limit_messages"
     t.string  "url"
+    t.boolean "status",         default: true
     t.integer "user_id"
   end
 
   create_table "messages", force: true do |t|
     t.integer "category"
     t.string  "twilio_object"
+    t.string  "recording_url"
+    t.string  "from_phone"
+    t.string  "call_sid"
+    t.string  "recording_sid"
     t.integer "event_id"
   end
 

@@ -33,6 +33,7 @@ end
 get '/users/:id' do 
   @user = User.find(session[:id])
   @events = Event.where("user_id = ?", session[:id]).reverse
+  # session[:current_event] = nil
   erb :'users/show'
 end
 
@@ -78,21 +79,14 @@ post '/events' do
     limit_messages: params[:limit_messages],
     user_id: session[:id])
 
-    if @event.valid?
-      @event.save
-      session[:message] = "Event Saved!"
-      redirect :"/users/#{session[:id]}"
-    else
-      #session[:message] = @event.errors.full_messages
-      redirect :'/events/new'
-    end
-
-end
-
-get '/events/:url' do
-  @event = Event.where('url = ?', "#{params[:url]}").first
-  session[:message] = nil
-  erb :'events/show'
+  if @event.valid?
+    @event.save
+    session[:message] = "Event Saved!"
+    redirect :"/users/#{session[:id]}"
+  else
+    #session[:message] = @event.errors.full_messages
+    redirect :'/events/new'
+  end
 end
 
 get '/events/call/:url' do
@@ -104,6 +98,21 @@ end
 post '/events/call' do
   @event = Event.where('url = ?', params[:url]).first
   CallBack.initiate_call(@event, params[:phone])
+  erb :"/events/thankyou"
+end
+
+get '/events/recording' do
+  # @event = Event.where('url = ?', params[:url]).first
+  erb :'events/recording'
+end
+
+post '/events/recording/:eventid' do 
+  @message = Message.create(
+              event_id: params[:eventid],
+              recording_url: params[:RecordingUrl],
+              from_phone: params[:To],
+              call_sid: params[:CallSid],
+              recording_sid: params[:RecordingSid])
 end
 
 post '/events/record/:url' do
@@ -113,7 +122,11 @@ post '/events/record/:url' do
   erb :'events/record.xml', layout: false
 end
 
-
+get '/events/:url' do
+  @event = Event.where('url = ?', "#{params[:url]}").first
+  session[:message] = nil
+  erb :'events/show'
+end
 
 
 
