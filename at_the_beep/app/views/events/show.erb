@@ -1,8 +1,7 @@
 <h2><%= @event.name %></h2>
 
-<% if @event.check_status == false%>
-<h3>This event is now closed</h3>
-<%end%>
+<% if @event.check_status == true%>
+
 
 <h4>Event Details</h4>
 
@@ -10,8 +9,13 @@
   <%=@event.name%>
   <li><%=@event.details%></li>
   <li>Date:<%=@event.date%></li>
-  <li>URL:  <a href='http://63f9cdcf.ngrok.com/events/call/<%=@event.url%>'>http://63f9cdcf.ngrok.com/events/call/<%=@event.url%></li>
+  <li>URL:  
+    <a href='http://63f9cdcf.ngrok.com/events/call/<%=@event.url%>'>http://63f9cdcf.ngrok.com/events/call/<%=@event.url%></li>
 </ul>
+
+<%else%>
+  <h3>This event is now closed</h3>
+<%end%>
 
 <hr/>
 
@@ -20,6 +24,8 @@
 <h3><%=index%>) <a href="<%= message.recording_url %>">From: <%=message.from_phone%></h3>
 
 <%end%>
+
+<hr/>
 <div><a href='/users/<%= session[:id]%>'>Back to My Events</a></div>
 <div><a href='/logout'>Logout</a></div>
 
