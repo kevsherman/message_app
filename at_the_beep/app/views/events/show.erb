@@ -13,15 +13,13 @@
   <li>URL:  <a href='http://63f9cdcf.ngrok.com/events/call/<%=@event.url%>'>http://63f9cdcf.ngrok.com/events/call/<%=@event.url%></li>
 </ul>
 
+<hr/>
+
+<% @messages.each.with_index(1) do |message, index| %>
+
+<h3><%=index%>) <a href="<%= message.recording_url %>">From: <%=message.from_phone%></h3>
+
+<%end%>
 <div><a href='/users/<%= session[:id]%>'>Back to My Events</a></div>
 <div><a href='/logout'>Logout</a></div>
 
-<div>
-  <form method='post' action='/events/record/<%=@event.url%>?AccountSid=AC3086a84a6443cd6b5fa11274340a252c&ToZip=&FromState=BC&Called=%2B16042106484&FromCountry=CA&CallerCountry=CA&CalledZip=&Direction=inbound&FromCity=NORTH+VANCOUVER&CalledCountry=CA&CallerState=BC&CallSid=CA4dbeb65ff9b858df8dbd2c284bd3e0e3&CalledState=BC&From=%2B17783404364&CallerZip=&FromZip=&CallStatus=ringing&ToCity=NORTH+VANCOUVER&ToState=BC&To=%2B16042106484&ToCountry=CA&CallerCity=NORTH+VANCOUVER&ApiVersion=2010-04-01&Caller=%2B17783404364&CalledCity=NORTH+VANCOUVER'>
-    <input type='submit' value='Simulate Twilio Post to /events/recording'>
- </form>
-</div>
-
-<div>
-  <form method='post' action='http://2010-04-01/Accounts/AC78ebd26aa18b190fd9b819b546b49654/Calls'
-</div>

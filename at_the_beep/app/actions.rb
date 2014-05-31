@@ -101,9 +101,11 @@ post '/events/call' do
   erb :"/events/thankyou"
 end
 
-get '/events/recording' do
-  # @event = Event.where('url = ?', params[:url]).first
-  erb :'events/recording'
+post '/events/record/:url' do
+  @event = Event.where('url = ?', "#{params[:url]}").first
+  content_type 'text/xml'
+  @xml_response = CallBack.record_instructions(@event)
+  erb :'events/record.xml', layout: false
 end
 
 post '/events/recording/:eventid' do 
@@ -115,15 +117,9 @@ post '/events/recording/:eventid' do
               recording_sid: params[:RecordingSid])
 end
 
-post '/events/record/:url' do
-  @event = Event.where('url = ?', "#{params[:url]}").first
-  content_type 'text/xml'
-  @xml_response = CallBack.record_instructions(@event)
-  erb :'events/record.xml', layout: false
-end
-
 get '/events/:url' do
   @event = Event.where('url = ?', "#{params[:url]}").first
+  @messages = Message.where('event_id = ?', @event.id )
   session[:message] = nil
   erb :'events/show'
 end
