@@ -1,4 +1,3 @@
-<h2>Please Log In to see your Events</h2>
 <% if session[:message] %>
 <div class="alert alert-warning"><%= session[:message]%></div>
 <% end %>
@@ -11,19 +10,17 @@
   <% end %>
 <% end %>
 
-<form method='post' action='/login'>
-  <div>
-    Email:<input type='email' name='email'>
-  </div>
 
-  <div>
-    Password:<input type='password' name='password'>
-  </div>
+<div class="container">
 
-  <div>
-    <input type='submit' value='Login'>
-  </div>
-</form>
+  <form class="form-signin" role="form" method='post' action='/login'>
+    <h2 class="form-signin-heading">Please Log In to see Your Events</h2>
+    <input type="email" name="email" class="form-control" placeholder="Email address" required="" autofocus="">
+    <input type="password" name="password" class="form-control" placeholder="Password" required="">
+    <label class="checkbox">
+      <input type="checkbox" value="remember-me"> Remember me
+    </label>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+  </form>
 
-<div><a href='/users/new'>Not a User Yet?</a></div>
-<div><a href='/'>Home</a></div>
+</div>  

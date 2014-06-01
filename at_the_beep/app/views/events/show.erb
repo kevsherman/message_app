@@ -14,7 +14,7 @@
 </ul>
 
 <%else%>
-  <h3>This event is now closed</h3>
+  <h3>You can only leave new messages for events that are occuring today!</h3>
 <%end%>
 
 <hr/>
@@ -24,8 +24,3 @@
 <h3><%=index%>) <a href="<%= message.recording_url %>">From: <%=message.from_phone%></h3>
 
 <%end%>
-
-<hr/>
-<div><a href='/users/<%= session[:id]%>'>Back to My Events</a></div>
-<div><a href='/logout'>Logout</a></div>
-
