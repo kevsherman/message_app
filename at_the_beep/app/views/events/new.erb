@@ -1,32 +1,27 @@
-  <h2>New Event Details</h2>
+<div class="container">
 
-<form method='post' action='/events'>
-  <div>
-    Event Name:<input type='text' name='name' placeholder="Aniversary, B-Day, Wedding....">
-  </div>
-    <div>
-    Event Details:<input type='text' name='details' placeholder="where? why?">
-  </div>
-  <input type='hidden' name='status' value="0">
-  <div>
-    Event Date:<input type='date' name='date' value='<%=Time.now.strftime("%Y-%m-%e")%>'>
-  </div>
-    <br>
+  <form class="form" action='/events' method='post' role="form" method='post'>
+    <h2 class="form-heading">New Event Details</h2>
+      <input type="text" name="name" class="form-control" placeholder="Event name" required="" autofocus="">
+      <input type="text" name="details" class="form-control" placeholder="A short description of the event" required="" autofocus="">
+      <input type="date" name="date" class="form-control" value="<%=Time.now.strftime("%Y-%m-%e")%>" required="" autofocus="">
+    
+    <h4>Message Settings</h4>
+    <h5>Maximum length of message</h5>
+    <div class="radio">
+      <input type="radio" name="message_length" value="10" checked="checked">10 sec.<br>
+      <input type="radio" name="message_length" value="15">15 sec. 
+    </div>
 
-  <div>
-    Message Settings<br>
-    Max. Length: <input type="radio" name="message_length" value="10" checked='checked'>10 sec. <input type="radio" name="message_length" value="15">15 sec. <br>
-    Limit Messages to:<br>
-    <input type="radio" name="limit_messages" value="1">1<br>
-    <input type="radio" name="limit_messages" value="10" checked='checked'>10<br>
-    <input type="radio" name="limit_messages" value="50">50<br>
-    <input type="radio" name="limit_messages" value="0">unlimited<br>
+    <h5>Limit number of messages to:</h5>
+    <div class="radio">
+      <input type="radio" name="limit_messages" value="1">1<br>
+      <input type="radio" name="limit_messages" value="10" checked='checked'>10<br>
+      <input type="radio" name="limit_messages" value="50">50<br>
+      <input type="radio" name="limit_messages" value="0">unlimited<br>
+    </div>
+    
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Create Event</button>
+  </form>
 
-  </div>
-
-<br>
-
-  <div>
-    <input type='submit' value='Create Event'>
-  </div>
-</form>
+</div> 
