@@ -73,6 +73,29 @@ get '/events/edit/:url' do
   erb :'events/edit'
 end
 
+post '/events/update' do
+  #url= ('a'..'z').to_a.shuffle[0,9].join # this should be moved into the model as an AactiveRecord validationsuch as: before_validation : generate_token, on :create 
+  @event = Event.where('url = ?', "#{params[:url]}").first
+                       # and the generate_token method should a private
+    @event.name= params[:name]
+    @event.details= params[:details]
+    @event.status= params[:status]
+    @event.date= params[:date]
+    @event.message_length= params[:message_length]
+    @event.limit_messages= params[:limit_messages]
+    @event.user_id= session[:id]
+
+  if @event.valid?
+    @event.save
+    session[:message] = "Changes Saved!"
+    redirect :"/users/#{session[:id]}"
+  else
+    #session[:message] = @event.errors.full_messages
+    redirect :'/events/edit'
+  end
+end
+
+
 post '/events' do
   #url= ('a'..'z').to_a.shuffle[0,9].join # this should be moved into the model as an AactiveRecord validationsuch as: before_validation : generate_token, on :create 
   @event = Event.new(                     # and the generate_token method should a private

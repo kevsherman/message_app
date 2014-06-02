@@ -1,10 +1,11 @@
 <div class="container">
 
   <form class="form" action='/events/update' method='post' role="form" method='post'>
-    <h2 class="form-heading">New Event Details</h2>
+    <h2 class="form-heading">Edit Event Details</h2>
       <input type="text" name="name" class="form-control" value="<%=@event.name%>" required="" autofocus="">
       <input type="text" name="details" class="form-control" value="<%=@event.details%>">
       <input type="date" name="date" class="form-control" value="<%=@event.date%>">
+      <input type="hidden" name="url" value="<%=@event.url%>">
     
     <h4>Message Settings</h4>
     <h5>Maximum length of message</h5>
