@@ -1,23 +1,16 @@
-<h2>Hello <%= @user.firstname%> - Welcome to the Message App</h2>
+<h2>Welcome back <%= @user.firstname%>!</h2>
 <p id="message"><%=session[:message]%></p>
 
 <div class="container">
-
-
   <h3><a href='../events/new'>Add New Event</a></h3>
-  <h4>Here is a list of your events</h4>
+  <hr/>
 
-  <h5>Current Events</h5>
-
-  
-  
-      <% @events.each do |event| %>
+  <h4>Your Events</h4>
+    <% @events.each do |event| %>
       <a href="../events/<%=event.url%>">
       <div class="col-sm-5 col-md-5 col-lg-5 event-item">
         <%= event.name %>
       </div>
       </a>
-      <%end%>
-    
-
+    <%end%>
 </div>

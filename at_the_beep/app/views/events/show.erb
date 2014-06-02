@@ -1,16 +1,12 @@
-<h2><%= @event.name %></h2>
+<h2><%= @event.name %> <small><%=@event.date%></small></h2>
 
 <% if @event.check_status == true%>
 
 
-<h4>Event Details</h4>
-
-<ul>
-  <%=@event.name%>
-  <li><%=@event.details%></li>
-  <li>Date:<%=@event.date%></li>
-  <li>URL:  
-    <a href='http://63f9cdcf.ngrok.com/events/call/<%=@event.url%>'>http://63f9cdcf.ngrok.com/events/call/<%=@event.url%></li>
+<ul class="list-unstyled">
+  <li class="event-details"><%=@event.details%></li>
+  <li>Share the link below with everyone you'd like to receive a message from:</li>
+  <li class="event-details"><a href='http://63f9cdcf.ngrok.com/events/call/<%=@event.url%>'>http://63f9cdcf.ngrok.com/events/call/<%=@event.url%></li>
 </ul>
 
 <%else%>
