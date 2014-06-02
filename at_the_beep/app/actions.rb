@@ -68,6 +68,11 @@ get '/events/new' do
   erb :'events/new'
 end
 
+get '/events/edit/:url' do
+  @event = Event.where('url = ?', "#{params[:url]}").first
+  erb :'events/edit'
+end
+
 post '/events' do
   #url= ('a'..'z').to_a.shuffle[0,9].join # this should be moved into the model as an AactiveRecord validationsuch as: before_validation : generate_token, on :create 
   @event = Event.new(                     # and the generate_token method should a private

@@ -1,0 +1,27 @@
+<div class="container">
+
+  <form class="form" action='/events/update' method='post' role="form" method='post'>
+    <h2 class="form-heading">New Event Details</h2>
+      <input type="text" name="name" class="form-control" value="<%=@event.name%>" required="" autofocus="">
+      <input type="text" name="details" class="form-control" value="<%=@event.details%>">
+      <input type="date" name="date" class="form-control" value="<%=@event.date%>">
+    
+    <h4>Message Settings</h4>
+    <h5>Maximum length of message</h5>
+    <div class="radio">
+      <input type="radio" name="message_length" value="10" checked="checked">10 sec.<br>
+      <input type="radio" name="message_length" value="15">15 sec. 
+    </div>
+
+    <h5>Limit number of messages to:</h5>
+    <div class="radio">
+      <input type="radio" name="limit_messages" value="1">1<br>
+      <input type="radio" name="limit_messages" value="10" checked='checked'>10<br>
+      <input type="radio" name="limit_messages" value="50">50<br>
+      <input type="radio" name="limit_messages" value="0">unlimited<br>
+    </div>
+    
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Save Changes</button>
+  </form>
+
+</div> 
