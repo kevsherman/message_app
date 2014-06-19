@@ -1,0 +1,32 @@
+###  User Stories  ###
+
+Event Owner / User
+
+1. As a User, I can register to allow people to leave me messages on my special day.
+2. As a User, I can Login
+3.            I can create one or more events.
+4.            I am given a link to send to my contacts, which gives them the details of how to leave a message. 
+5.            I set the timeframe for people to leave messages.
+6.            I can see a listing of all the recordings left
+7.            I can listen to any of the indivdual recordings.
+8.            I can listen to all of the recordings at once.  
+9.            I can categorize my recordings by family, friends, etc.  
+10.           I can email any of the contacts who left email addresses to thank them
+11.           I can send an email response to ALL the email contacts
+12.           I can see stats on my callers, such as where they called from (on a map)
+13.           I can download a file of all the messages
+
+
+Caller / Event User
+
+1. I want to leave a message for the event owner
+2. I click on the link provided which takes me to a form.
+3. On the form, I enter my phone number
+   I will have the option to enter my email   
+4. If I enter a non-US or non-Canadian number, I will be told the number cannot be accepted.
+5. If the number is valid, I will recieve a call.
+6. I will be prompted to choose a category (ie. family, friend) 
+7. I will leave a voice mail and hang up.
+8. If I provided an email, I will receive a notification when my message is heard by the event owner.
+
+

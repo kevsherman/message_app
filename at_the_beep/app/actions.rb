@@ -118,9 +118,7 @@ post '/events' do
 end
 
 get '/events/call/:url' do
-  binding.pry
   @event = Event.where('url = ?', params[:url]).first
-  binding.pry
   session[:message] = nil
   erb :'events/call'
 end
